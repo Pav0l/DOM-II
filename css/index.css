@@ -350,3 +350,9 @@ img {
   background: #FFFFFF;
   color: #17A2B8;
 }
+.fun-time {
+  background-color: #FFEBCD;
+}
+.darken-me {
+  background-color: hsl(0, 0%, 81%);
+}
