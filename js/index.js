@@ -31,14 +31,14 @@ bunFus.addEventListener('mouseover', item => {
     const { target } = item;
     target.textContent = 'Bun Fus'
 });
+
 navItems[0].addEventListener('click', item => item.target.textContent = "HomeAlone");
 
-const navBar = queSel('.nav');
+const navBar = queSel('header');
 navBar.addEventListener('click', i => {
     i.target.style = 'background-color: lightgrey';
-    // i.stopPropagation();
+    i.stopPropagation();
 });
-
 
 // wheel
 allItems.addEventListener('wheel', () => {
