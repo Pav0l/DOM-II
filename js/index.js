@@ -6,9 +6,9 @@ const eventArr = [
     'contextmenu',
     'load',
     'mousemove',
-   // 'resize',
-    'scroll',
-    // 'select',
+    'focus',
+    'blur',
+    'select',
     'dblclick',
 ];
 
@@ -17,7 +17,6 @@ const queSel = selector => document.querySelector(selector);
 // .preventDefault()
 const navItems = document.querySelectorAll('a');
 navItems.forEach(anchorTag => anchorTag.addEventListener('click', items => items.preventDefault()));
-
 
 // keydown
 const allItems = queSel('*');
@@ -32,6 +31,14 @@ bunFus.addEventListener('mouseover', item => {
     const { target } = item;
     target.textContent = 'Bun Fus'
 });
+navItems[0].addEventListener('click', item => item.target.textContent = "HomeAlone");
+
+const navBar = queSel('.nav');
+navBar.addEventListener('click', i => {
+    i.target.style = 'background-color: lightgrey';
+    // i.stopPropagation();
+});
+
 
 // wheel
 allItems.addEventListener('wheel', () => {
@@ -56,8 +63,6 @@ footerThing.addEventListener('mousemove', i => {
     i.target.textContent++;
 })
 
-
-
 // dblclick 
 const aaa = queSel('div h2');
 aaa.addEventListener('dblclick', i => {    
@@ -65,8 +70,21 @@ aaa.addEventListener('dblclick', i => {
     i.target.style = 'color: red';
 });
 
-//resize - Why is this triggered on reload?
-const firstImg = queSel('header img')
-firstImg.addEventListener('resize', console.log('HEY! HEY! HEY! STOP RESIZING ME'))
 
-console.log(aaa);
+footerThing.insertAdjacentHTML('beforebegin', '<input type="text" id="name1" name="name" placeholder="Enter your name...">');
+const inputField = queSel('#name1');
+//select
+inputField.addEventListener('select', text => {
+    text.target.style = 'color: red';
+});
+
+// focus
+inputField.addEventListener('focus', () => {
+    const foo = queSel('.footer');
+    foo.style = 'background-color: #17A2B8; color: white';
+})
+
+//blur
+inputField.addEventListener('blur', text => {
+    text.target.style = 'color: black';
+})
